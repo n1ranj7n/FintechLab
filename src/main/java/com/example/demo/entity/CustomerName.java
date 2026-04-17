@@ -3,21 +3,20 @@ package com.example.demo.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "customer_identification")
-public class CustomerIdentification {
+@Table(name = "customer_name")
+public class CustomerName {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Long customerIdentifier;
-    private String customerIdentificationItem;
-    private String customerIdentificationType;
-    private String effectiveDate;
+    private String customerNameType;
+    private String customerNameValue;
     private Long customerDetailId;
     private String createdUserId;
 
-    public CustomerIdentification() {
+    public CustomerName() {
     }
 
     public Long getId() {
@@ -32,28 +31,20 @@ public class CustomerIdentification {
         this.customerIdentifier = customerIdentifier;
     }
 
-    public String getCustomerIdentificationItem() {
-        return customerIdentificationItem;
+    public String getCustomerNameType() {
+        return customerNameType;
     }
 
-    public void setCustomerIdentificationItem(String customerIdentificationItem) {
-        this.customerIdentificationItem = customerIdentificationItem;
+    public void setCustomerNameType(String customerNameType) {
+        this.customerNameType = customerNameType;
     }
 
-    public String getCustomerIdentificationType() {
-        return customerIdentificationType;
+    public String getCustomerNameValue() {
+        return customerNameValue;
     }
 
-    public void setCustomerIdentificationType(String customerIdentificationType) {
-        this.customerIdentificationType = customerIdentificationType;
-    }
-
-    public String getEffectiveDate() {
-        return effectiveDate;
-    }
-
-    public void setEffectiveDate(String effectiveDate) {
-        this.effectiveDate = effectiveDate;
+    public void setCustomerNameValue(String customerNameValue) {
+        this.customerNameValue = customerNameValue;
     }
 
     public Long getCustomerDetailId() {

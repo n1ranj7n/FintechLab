@@ -1,53 +1,27 @@
 package com.example.demo.controller;
 
-import java.util.List;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
 import com.example.demo.entity.CustomerDetail;
 import com.example.demo.repository.CustomerDetailRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/api/customer-details")
+@RequestMapping("/api/customer-detail")
+@CrossOrigin(origins = "http://localhost:4200")
 public class CustomerDetailController {
 
-    private final CustomerDetailRepository repo;
+    @Autowired
+    private CustomerDetailRepository customerDetailRepository;
 
-    public CustomerDetailController(CustomerDetailRepository repo) {
-        this.repo = repo;
+    @GetMapping
+    public List<CustomerDetail> getAllCustomerDetails() {
+        return customerDetailRepository.findAll();
     }
 
     @PostMapping
-    public CustomerDetail create(@RequestBody CustomerDetail body) {
-        return repo.save(body);
-    }
-
-    @GetMapping
-    public List<CustomerDetail> getAll() {
-        return repo.findAll();
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<CustomerDetail> getById(@PathVariable Long id) {
-        return repo.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<CustomerDetail> update(@PathVariable Long id, @RequestBody CustomerDetail body) {
-        return repo.findById(id).map(existing -> {
-            existing.setFullName(body.getFullName());
-            existing.setAge(body.getAge());
-            existing.setGender(body.getGender());
-            return ResponseEntity.ok(repo.save(existing));
-        }).orElse(ResponseEntity.notFound().build());
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
-        if (!repo.existsById(id)) return ResponseEntity.notFound().build();
-        repo.deleteById(id);
-        return ResponseEntity.noContent().build();
+    public CustomerDetail saveCustomerDetail(@RequestBody CustomerDetail customerDetail) {
+        return customerDetailRepository.save(customerDetail);
     }
 }

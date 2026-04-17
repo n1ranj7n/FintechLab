@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" layout:decorate="layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <h1>Welcome to My App</h1>
+        <p>User management system using Spring Boot and Thymeleaf.</p>
+        <a th:href="@{/users}" class="btn btn-primary">View Users</a>
+        <a th:href="@{/new}" class="btn btn-success">Add New User</a>
+    </div>
+</body>
+</html>

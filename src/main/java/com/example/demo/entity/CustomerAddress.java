@@ -1,40 +1,83 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "customer_address")
 public class CustomerAddress {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String houseNo;
-    private String street;
-    private String city;
-    private String state;
-    private String pincode;
+    private Long customerIdentifier;
+    private String customerAddressType;
+    private String customerAddressValue;
+    private String effectiveDate;
+    private Long classificationId;
+    private Long customerDetailId;
+    private String createdUserId;
 
-    public CustomerAddress() {}
+    public CustomerAddress() {
+    }
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public Long getId() {
+        return id;
+    }
 
-    public String getHouseNo() { return houseNo; }
-    public void setHouseNo(String houseNo) { this.houseNo = houseNo; }
+    public Long getCustomerIdentifier() {
+        return customerIdentifier;
+    }
 
-    public String getStreet() { return street; }
-    public void setStreet(String street) { this.street = street; }
+    public void setCustomerIdentifier(Long customerIdentifier) {
+        this.customerIdentifier = customerIdentifier;
+    }
 
-    public String getCity() { return city; }
-    public void setCity(String city) { this.city = city; }
+    public String getCustomerAddressType() {
+        return customerAddressType;
+    }
 
-    public String getState() { return state; }
-    public void setState(String state) { this.state = state; }
+    public void setCustomerAddressType(String customerAddressType) {
+        this.customerAddressType = customerAddressType;
+    }
 
-    public String getPincode() { return pincode; }
-    public void setPincode(String pincode) { this.pincode = pincode; }
+    public String getCustomerAddressValue() {
+        return customerAddressValue;
+    }
+
+    public void setCustomerAddressValue(String customerAddressValue) {
+        this.customerAddressValue = customerAddressValue;
+    }
+
+    public String getEffectiveDate() {
+        return effectiveDate;
+    }
+
+    public void setEffectiveDate(String effectiveDate) {
+        this.effectiveDate = effectiveDate;
+    }
+
+    public Long getClassificationId() {
+        return classificationId;
+    }
+
+    public void setClassificationId(Long classificationId) {
+        this.classificationId = classificationId;
+    }
+
+    public Long getCustomerDetailId() {
+        return customerDetailId;
+    }
+
+    public void setCustomerDetailId(Long customerDetailId) {
+        this.customerDetailId = customerDetailId;
+    }
+
+    public String getCreatedUserId() {
+        return createdUserId;
+    }
+
+    public void setCreatedUserId(String createdUserId) {
+        this.createdUserId = createdUserId;
+    }
 }
